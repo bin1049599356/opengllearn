@@ -15,9 +15,9 @@ ADD_EXECUTABLE(glfirst
                 ${CPPS}
                 )
 
-#TARGET_INCLUDE_DIRECTORIES(glfirst 
-#    PRIVATE "F:\\tjb\\opensrc\\glfw-3.3.8\\build\\install\\include"
-#)
+TARGET_INCLUDE_DIRECTORIES(glfirst 
+    PRIVATE ${PROJECT_DIR}
+)
 #
 #
 #TARGET_LINK_DIRECTORIES(glfirst 
@@ -27,6 +27,8 @@ ADD_EXECUTABLE(glfirst
 target_link_libraries(glfirst 
     glfw
     glad
+    stb
+    glm
 )
 
 
