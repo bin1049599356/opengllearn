@@ -2,21 +2,68 @@
 #include <algorithm>
 #include <glad/glad.h>
 #include <GLFW\glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 #include <shader.h>
-
-float vertices[] = {
-    -0.5, -0.5, 0, 0., 0., 1,    0.0, 0.0,
-    0.5, -0.5, 0, 0., 1, 0.,     1.0, 0.0,
-    0.5, 0.5, 0, 1, 0, 0.,       1.0, 1.0,
-    -0.5, 0.5, 0, 0, 1, 0.,      0.0, 1.0
-};
+//
+//float vertices[] = {
+//    -0.5, -0.5, -0.5,  0., 0., 1.,      0.0, 0.0,
+//    0.5, -0.5, -0.5,   0., 1., 0.,      1.0, 0.0,
+//    0.5, 0.5, -0.5,    1., 0., 0.,      1.0, 1.0,
+//    -0.5, 0.5, -0.5,   0., 1., 0.,      0.0, 1.0
+//};
 
 GLuint indices[] = {
     0, 1, 2,
-    2, 3, 0
+    2, 3, 0,
+};
+
+float vertices[] = {
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 };
 
 float texCoords[] = {
@@ -24,6 +71,19 @@ float texCoords[] = {
     1.0, 0.0,
     1.0, 1.0,
     0.0, 1.0
+};
+
+glm::vec3 cubePositions[] = {
+  glm::vec3(0.0f,  0.0f,  0.0f),
+  glm::vec3(2.0f,  5.0f, -15.0f),
+  glm::vec3(-1.5f, -2.2f, -2.5f),
+  glm::vec3(-3.8f, -2.0f, -12.3f),
+  glm::vec3(2.4f, -0.4f, -3.5f),
+  glm::vec3(-1.7f,  3.0f, -7.5f),
+  glm::vec3(1.3f, -2.0f, -2.5f),
+  glm::vec3(1.5f,  2.0f, -2.5f),
+  glm::vec3(1.5f,  0.2f, -1.5f),
+  glm::vec3(-1.3f,  1.0f, -1.5f)
 };
 
 void processInput(GLFWwindow* window)
@@ -51,6 +111,7 @@ int main()
 
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 
+    glEnable(GL_DEPTH_TEST);
     glViewport(0, 0, 800, 600);
 
     glfwSetFramebufferSizeCallback(window, [](GLFWwindow* win, int w, int h) {
@@ -74,7 +135,7 @@ int main()
     //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     strCurDif = strCurDif.substr(0, strCurDif.rfind("\\"));
-    Shader shader((strCurDif + "\\vertexShader.glsl").c_str(), (strCurDif + "\\fragShader.glsl").c_str());
+    Shader ourShader((strCurDif + "\\vertexShader.glsl").c_str(), (strCurDif + "\\fragShader.glsl").c_str());
 
     std::string strAssertPath = strCurDif.substr(0, strCurDif.rfind("\\"));
     strAssertPath = strAssertPath.substr(0, strAssertPath.rfind("\\"));
@@ -108,36 +169,56 @@ int main()
     glGenerateMipmap(GL_TEXTURE_2D);
 
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, 0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 3));
+    //glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 6));
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
+    //glEnableVertexAttribArray(2);
 
 
-    shader.use();
-        shader.setInt("texture1", 0);
-        shader.setInt("texture2", 1);
+    ourShader.use();
+    ourShader.setInt("texture1", 0);
+    ourShader.setInt("texture2", 1);
+
+    glm::mat4 projection = glm::perspective(glm::radians(60.0f), 800.0f / 600.0f, 0.1f, 1000.f);
+    glm::mat4 view(1.f);
+    view = glm::translate(view, glm::vec3(0, 0, -3.0f));
+
+    glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        //shader.use();
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture1);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, texture2);
 
-        //GLuint unifragColor = glGetUniformLocation(shaderPro, "UniFragColor");
-        //glUniform4f(unifragColor, r/255.f, g / 255.f, b / 255.f, 1.0f);
-        //glBindTexture(GL_TEXTURE_2D, texture);
-        //glBindVertexArray(VAO);
+        ourShader.use();
 
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        for (int i = 0; i < sizeof(cubePositions); i++)
+        {
+            // create transformations
+            glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+            model = glm::translate(model, cubePositions[i]);
+            model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
+            unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
+            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-        glfwPollEvents();
+            //glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+            glBindVertexArray(VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+
         glfwSwapBuffers(window);
+        glfwPollEvents();
     }
 
     glfwTerminate();
