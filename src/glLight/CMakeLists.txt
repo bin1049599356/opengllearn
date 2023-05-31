@@ -10,20 +10,18 @@ FILE(GLOB_RECURSE HEADS ${PROJECT_DIR}/*.h)
 source_group("Header" FILES ${HEADS})
 source_group("Source" FILES ${CPPS})
 
+FILE(GLOB_RECURSE GLSL ${PROJECT_DIR}/*.glsl)
+source_group("Glsl" FILES ${GLSL})
 
 ADD_EXECUTABLE(${TARGETNAME}
                 ${HEADS}
                 ${CPPS}
+                ${GLSL}
                 )
 
 TARGET_INCLUDE_DIRECTORIES(${TARGETNAME} 
     PRIVATE ${PROJECT_DIR}
 )
-#
-#
-#TARGET_LINK_DIRECTORIES(${TARGETNAME} 
-#    PRIVATE "F:/tjb/opensrc/glfw-3.3.8/build/install/lib"
-#)
 
 target_link_libraries(${TARGETNAME} 
     common

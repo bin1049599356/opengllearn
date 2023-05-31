@@ -155,6 +155,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 int main()
 {
     std::string strCurDif = __FILE__;
+    strCurDif = strCurDif.substr(0, strCurDif.rfind("\\"));
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -198,7 +199,6 @@ int main()
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    strCurDif = strCurDif.substr(0, strCurDif.rfind("\\"));
     Shader ourShader((strCurDif + "\\vertexShader.glsl").c_str(), (strCurDif + "\\fragShader.glsl").c_str());
 
     std::string strAssertPath = strCurDif.substr(0, strCurDif.rfind("\\"));
