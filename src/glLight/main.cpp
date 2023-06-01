@@ -22,49 +22,48 @@ GLuint indices[] = {
     0, 1, 2,
     2, 3, 0,
 };
-
 float vertices[] = {
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
 
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
 
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
 
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
 
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 };
 
 float texCoords[] = {
@@ -91,6 +90,7 @@ glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
+glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -119,6 +119,10 @@ void processInput(GLFWwindow* window)
         camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+        camera.ProcessKeyboard(UP, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+        camera.ProcessKeyboard(DOWN, deltaTime);
 }
 
 
@@ -199,51 +203,25 @@ int main()
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    Shader ourShader((strCurDif + "\\vertexShader.glsl").c_str(), (strCurDif + "\\fragShader.glsl").c_str());
-
-    std::string strAssertPath = strCurDif.substr(0, strCurDif.rfind("\\"));
-    strAssertPath = strAssertPath.substr(0, strAssertPath.rfind("\\"));
-    strAssertPath += "\\assert\\";
-    int x, y, c;
-    stbi_set_flip_vertically_on_load(true);
-    stbi_uc * data = stbi_load((strAssertPath + "container.jpg").c_str(), &x, &y, &c, 3);
-    stbi_uc* data2 = stbi_load((strAssertPath + "awesomeface.png").c_str(), &x, &y, &c, 3);
+    Shader ourShader((strCurDif + "\\objVertexShader.glsl").c_str(), (strCurDif + "\\objFragShader.glsl").c_str());
+    Shader LightCubeShader((strCurDif + "\\LightCubeVertex.glsl").c_str(), (strCurDif + "\\LightCubeFrag.glsl").c_str());
 
 
-    GLuint texture1;
-    glGenTextures(1, &texture1);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, x, y, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-    GLuint texture2;
-    glGenTextures(1, &texture2);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, x, y, 0, GL_RGB, GL_UNSIGNED_BYTE, data2);
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 3));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(sizeof(float) * 3));
     //glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 6));
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
     //glEnableVertexAttribArray(2);
 
+    GLuint LIGHTVAO;
+    glGenVertexArrays(1, &LIGHTVAO);
+    glBindVertexArray(LIGHTVAO);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(sizeof(float) * 3));
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 
-    ourShader.use();
-    ourShader.setInt("texture1", 0);
-    ourShader.setInt("texture2", 1);
 
     glm::mat4 projection = glm::perspective(glm::radians(60.0f), 800.0f / 600.0f, 0.1f, 10000.f);
     glm::mat4 view(1.f);
@@ -264,36 +242,53 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture1);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture2);
-
         ourShader.use();
 
         //view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         //ourShader.setMat4("view", view);
+        lightPos.x = sinf((float)glfwGetTime() * glm::radians(50.0f)) * 2.0f;
+        lightPos.z = cosf((float)glfwGetTime() * glm::radians(50.0f)) * 2.0f;
 
         // pass projection matrix to shader (note that in this case it could change every frame)
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        ourShader.setMat4("projection", projection);
-
         glm::mat4 view = camera.GetViewMatrix();
+        ourShader.setMat4("projection", projection);
         ourShader.setMat4("view", view);
 
-        glBindVertexArray(VAO);
-        for (int i = 0; i < 10; i++)
+        ourShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        ourShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        ourShader.setVec3("lightPos", lightPos);
+        ourShader.setVec3("viewPos", camera.Position);
+        
+        for (int i = 0; i < 1; i++)
         {
             glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-            model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            //model = glm::translate(model, cubePositions[i]);
+            float angle = (float)glfwGetTime() * glm::radians(50.0f);// 20.0f * i;
+            model = glm::rotate(model, angle, glm::vec3(0.0f, 1.0f, 1.0f));
             ourShader.setMat4("model", model);
 
+            glBindVertexArray(VAO);
             glDrawArrays(GL_TRIANGLES, 0, 36);
 
             //break;
         }
+
+
+        LightCubeShader.use();
+        LightCubeShader.setMat4("projection", projection);
+        LightCubeShader.setMat4("view", view);
+        LightCubeShader.setVec3("objectColor", 1.0f, 1.f, 1.f);
+        LightCubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+        float angle = (float)glfwGetTime() * glm::radians(50.0f);// 20.0f * i;
+        model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
+        model;
+        LightCubeShader.setMat4("model", model);
+        glBindVertexArray(LIGHTVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         glfwSwapBuffers(window);
         glfwPollEvents();

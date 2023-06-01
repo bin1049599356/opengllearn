@@ -91,11 +91,22 @@ public:
         glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
     }
     // ------------------------------------------------------------------------
-    void setMat4(const std::string& name, glm::mat4 &value) const
+    void setMat4(const std::string& name, glm::mat4& value) const
     {
         glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
     }
-    
+    // ------------------------------------------------------------------------
+    template <typename T>
+    void setVec3(const std::string& name, T x, T y, T z) const
+    {
+        glUniform3f(glGetUniformLocation(ID, name.c_str()), (float)x, (float)y, (float)z);
+    }
+    // ------------------------------------------------------------------------
+    void setVec3(const std::string& name, glm::vec3& value) const
+    {
+        glUniform3f(glGetUniformLocation(ID, name.c_str()), (float)value.x, (float)value.y, (float)value.z);
+    }
+ 
 private:
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------
