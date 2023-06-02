@@ -246,8 +246,8 @@ int main()
 
         //view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         //ourShader.setMat4("view", view);
-        lightPos.x = sinf((float)glfwGetTime() * glm::radians(50.0f)) * 2.0f;
-        lightPos.z = cosf((float)glfwGetTime() * glm::radians(50.0f)) * 2.0f;
+        //lightPos.x = sinf((float)glfwGetTime() * glm::radians(50.0f)) * 2.0f;
+        //lightPos.z = cosf((float)glfwGetTime() * glm::radians(50.0f)) * 2.0f;
 
         // pass projection matrix to shader (note that in this case it could change every frame)
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -255,17 +255,42 @@ int main()
         ourShader.setMat4("projection", projection);
         ourShader.setMat4("view", view);
 
-        ourShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         ourShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         ourShader.setVec3("lightPos", lightPos);
-        ourShader.setVec3("viewPos", camera.Position);
+
+        //ourShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+        //ourShader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+        //ourShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        //ourShader.setFloat("material.shiniess", 32);
+
+        // material properties
+        ourShader.setVec3("material.ambient", 0.0f, 0.1f, 0.06f);
+        ourShader.setVec3("material.diffuse", 0.0f, 0.50980392f, 0.50980392f);
+        ourShader.setVec3("material.specular", 0.50196078f, 0.50196078f, 0.50196078f);
+        ourShader.setFloat("material.shininess", 32.0f);
+
+        //ourShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+        //ourShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f); // 将光照调暗了一些以搭配场景
+        ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        glm::vec3 lightColor;
+        lightColor.x = sin(glfwGetTime() * 2.0f);
+        lightColor.y = sin(glfwGetTime() * 0.7f);
+        lightColor.z = sin(glfwGetTime() * 1.3f);
+
+        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f); // 降低影响
+        glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f); // 很低的影响
+        ambientColor = glm::vec3(0.2f, 0.2f, 0.2f);
+        diffuseColor = glm::vec3(0.5f, 0.5f, 0.5f);
+
+        ourShader.setVec3("light.ambient", ambientColor);
+        ourShader.setVec3("light.diffuse", diffuseColor);
         
         for (int i = 0; i < 1; i++)
         {
             glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
             //model = glm::translate(model, cubePositions[i]);
             float angle = (float)glfwGetTime() * glm::radians(50.0f);// 20.0f * i;
-            model = glm::rotate(model, angle, glm::vec3(0.0f, 1.0f, 1.0f));
+            //model = glm::rotate(model, angle, glm::vec3(0.0f, 1.0f, 1.0f));
             ourShader.setMat4("model", model);
 
             glBindVertexArray(VAO);
@@ -278,14 +303,13 @@ int main()
         LightCubeShader.use();
         LightCubeShader.setMat4("projection", projection);
         LightCubeShader.setMat4("view", view);
-        LightCubeShader.setVec3("objectColor", 1.0f, 1.f, 1.f);
-        LightCubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        LightCubeShader.setVec3("objectColor", diffuseColor);
+        LightCubeShader.setVec3("lightColor", lightColor);
         glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
         model = glm::translate(model, lightPos);
         model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
         float angle = (float)glfwGetTime() * glm::radians(50.0f);// 20.0f * i;
-        model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
-        model;
+        //model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
         LightCubeShader.setMat4("model", model);
         glBindVertexArray(LIGHTVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
