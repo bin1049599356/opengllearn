@@ -7,6 +7,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+#include <ttAssert.h>
 
 #include <shader.h>
 #include <camera.h>
@@ -259,9 +260,9 @@ int main()
     std::string strAssertPath = strCurDif.substr(0, strCurDif.rfind("\\"));
     strAssertPath = strAssertPath.substr(0, strAssertPath.rfind("\\"));
     strAssertPath += "\\assert\\";
-    GLuint diffuseMap = loadTexture((strAssertPath + "container2.png").c_str());
-    GLuint specularMap = loadTexture((strAssertPath + "container2_specular.png").c_str());
-    GLuint emissionMap = loadTexture((strAssertPath + "matrix.jpg").c_str());
+    GLuint diffuseMap = loadTexture(std::string(ImageAssert("container2.png")).c_str());
+    GLuint specularMap = loadTexture(std::string(ImageAssert("container2_specular.png")).c_str());
+    GLuint emissionMap = loadTexture(std::string(ImageAssert("matrix.jpg")).c_str());
 
 
     glm::mat4 projection = glm::perspective(glm::radians(60.0f), 800.0f / 600.0f, 0.1f, 10000.f);

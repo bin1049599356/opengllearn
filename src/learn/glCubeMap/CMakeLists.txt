@@ -14,6 +14,8 @@ source_group("Source" FILES ${CPPS})
 FILE(GLOB_RECURSE GLSL ${PROJECT_DIR}/*.glsl)
 source_group("Glsl" FILES ${GLSL})
 
+ADD_DEFINITIONS(-DSTB_IMAGE_IMPLEMENTATION)
+
 ADD_EXECUTABLE(${TARGETNAME}
                 ${HEADS}
                 ${CPPS}
@@ -31,7 +33,7 @@ target_link_libraries(${TARGETNAME}
     stb
     glm
     assert
+    assimp
 )
-
 
 SET_PROPERTY(TARGET ${TARGETNAME} PROPERTY FOLDER "learn")

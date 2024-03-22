@@ -199,7 +199,7 @@ int main()
     vegetation.push_back(glm::vec3(-0.3f, 0.0f, -2.3f));
     vegetation.push_back(glm::vec3(0.5f, 0.0f, -0.6f));
 
-    glm::quat
+    //glm::quat
 
     // load textures
     // -------------
