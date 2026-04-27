@@ -17,6 +17,10 @@ ENDMACRO()
 
 SUBDIRLIST(SUBDIRS ${PROJECT_DIR})
 
+# 指定可执行程序输出目录
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG 	${publish_bin_debug})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE 	${publish_bin_release})
+
 FOREACH(subdir ${SUBDIRS})
   message("curdir:" ${subdir})
   ADD_SUBDIRECTORY(${subdir})

@@ -9,7 +9,9 @@ FILE(GLOB_RECURSE HEADS ${PROJECT_DIR}/*.h)
 source_group("Header" FILES ${HEADS})
 source_group("Source" FILES ${CPPS})
 
-add_library(glad 
+add_definitions(-DGLAD_GLAPI_EXPORT -DGLAD_GLAPI_EXPORT_BUILD)
+
+add_library(glad  SHARED
                 ${HEADS}
                 ${CPPS}
                 )

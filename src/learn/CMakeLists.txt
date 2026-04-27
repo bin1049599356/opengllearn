@@ -17,6 +17,9 @@ ENDMACRO()
 
 SUBDIRLIST(SUBDIRS ${PROJECT_DIR})
 
+
+add_definitions(-DGLAD_GLAPI_EXPORT)
+
 FOREACH(subdir ${SUBDIRS})
   message("curdir:" ${subdir})
   ADD_SUBDIRECTORY(${subdir})
